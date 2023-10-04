@@ -1,4 +1,4 @@
-# CDF to CML with LLama2 model
+# CDF to CDSW with LLama2 model
 Leverage the Llama2 model for creating a UI or API derived from your own knowledge base, scraped from your organization's website. This AMP contains the files to host an open source Llama2-based model and an accompanying UI or API. This AMP enables organizations to deploy a custom chatbot, currated to data scraped from a website (or websites) sitemap(s) using CDF (NiFi). 
 
 ![](/assets/catalog-entry.png)
@@ -11,7 +11,7 @@ Leverage the Llama2 model for creating a UI or API derived from your own knowled
 To build your own custom knowledge base, you will want to follow the instructions [here](USER_START_HERE/Build_Your_Own_Knowledge_Base_Tools/README.md) in the folder `USER_START_HERE`. There are guides for a Cloudera DataFlow and Pythonic implementation of how to do this. Then, you will want to rerun the `Populate Vector DB` Job to ensure your vector DB has the latest embeddings.
 
 ## Two Flavors: UI (Front end) and API
-This project allows you to access the context-driven LLM using two flavors: a UI and an API. Both are listed as Applications in CML which you can spin up/down as needed. 
+This project allows you to access the context-driven LLM using two flavors: a UI and an API. Both are listed as Applications in CDSW which you can spin up/down as needed. 
 
 ### UI (Front end)
 
@@ -31,12 +31,12 @@ Note that if this option does not appear, you may need to update your Administra
 ![](/assets/unauthenticated-access2.png)
 
 For request syntax: 
-GET and POST to the ROOT of the CML application endpoint (e.g. `https://subdomain.domain.go01-dem.ylcu-atmi.cloudera.site/`)
+GET and POST to the ROOT of the CDSW application endpoint (e.g. `https://subdomain.domain.go01-dem.ylcu-atmi.cloudera.site/`)
 Successful GET request should indicate the API is up and running:
 
 ![](/assets/GET-endpoint.png)
 
-Forming the POST request can be done through Postman or natively in CML:
+Forming the POST request can be done through Postman or natively in CDSW:
 
 1. Postman
 
@@ -59,20 +59,20 @@ Note that in future development, `engine` may also be customized to include more
 2. Pythonic (Available in the 4_app folder as an Jupyter notebook)
 
 ## Requirements
-#### CML Instance Types
+#### CDSW Instance Types
 - A GPU instance is required to perform inference on the LLM
-  - [CML Documentation: GPUs](https://docs.cloudera.com/machine-learning/cloud/gpu/topics/ml-gpu.html)
+  - [CDSW Documentation: GPUs](https://docs.cloudera.com/machine-learning/cloud/gpu/topics/ml-gpu.html)
 - A CUDA 5.0+ capable GPU instance type is recommended
   - The torch libraries in this AMP require a GPU with CUDA compute capability 5.0 or higher. (i.e. nVidia V100, A100, T4 GPUs)
 
 #### Resource Requirements
 This AMP creates the following workloads with resource requirements:
-- CML Session: `2 CPU, 4GB MEM`
-- CML Jobs: `4 CPU, 16GB MEM`
-- CML Application: `2 CPU, 1 GPU, 16GB MEM`
+- CDSW Session: `2 CPU, 4GB MEM`
+- CDSW Jobs: `4 CPU, 16GB MEM`
+- CDSW Application: `2 CPU, 1 GPU, 16GB MEM`
 
 #### External Resources
-This AMP requires pip packages and models from huggingface. Depending on your CML networking setup, you may need to whitelist some domains:
+This AMP requires pip packages and models from huggingface. Depending on your CDSW networking setup, you may need to whitelist some domains:
 - pypi.python.org
 - pypi.org
 - pythonhosted.org
@@ -92,15 +92,15 @@ This AMP requires pip packages and models from huggingface. Depending on your CM
 #### Chat API
 - [FastAPI](https://fastapi.tiangolo.com/)
 
-## Deploying on CML
-There are two ways to launch this prototype on CML:
+## Deploying on CDSW
+There are two ways to launch this prototype on CDSW:
 
-1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CML workspace, select the "CDF to CML with Llama2 models" tile, click "Launch as Project", click "Configure Project".
-2. **As ML Prototype** - In a CML workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/kevinbtalbert/cdf-to-cml-llama2-chatbot), click "Create Project", click "Configure Project".
+1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CDSW workspace, select the "CDF to CDSW with Llama2 models" tile, click "Launch as Project", click "Configure Project".
+2. **As ML Prototype** - In a CDSW workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/kevinbtalbert/cdf-to-CDSW-llama2-chatbot), click "Create Project", click "Configure Project".
 
 
 ## The Fine Print
 
-All the components of the application (knowledge base, context retrieval, prompt enhancement LLM) are running within CDF and CML. This application does not call any external model APIs nor require any additional training of an LLM. The knowledge base is generated using the user passed sitemaps in NiFi (CDF) or Python, depending on the user preference.
+All the components of the application (knowledge base, context retrieval, prompt enhancement LLM) are running within CDF and CDSW. This application does not call any external model APIs nor require any additional training of an LLM. The knowledge base is generated using the user passed sitemaps in NiFi (CDF) or Python, depending on the user preference.
 
 By configuring and launching this AMP, you will cause TheBloke/Llama-2-13B-chat-GGML, which is a third party large language model (LLM), to be downloaded and installed into your environment from the third party’s website. Additionally, you will be downloading sentence-transformers/all-mpnet-base-v2, which is the embedding model used in this project. Please see https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML and https://huggingface.co/sentence-transformers/all-mpnet-base-v2 for more information about the LLM and embedding model, including the applicable license terms.  If you do not wish to download and install TheBloke/Llama-2-13B-chat-GGML and sentence-transformers/all-mpnet-base-v2, do not deploy this repository.  By deploying this repository, you acknowledge the foregoing statement and agree that Cloudera is not responsible or liable in any way for TheBloke/Llama-2-13B-chat-GGML and sentence-transformers/all-mpnet-base-v2. Author: Cloudera Inc.
