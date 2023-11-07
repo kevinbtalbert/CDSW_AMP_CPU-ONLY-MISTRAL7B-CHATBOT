@@ -90,7 +90,7 @@ This AMP requires pip packages and models from huggingface. Depending on your CD
 There are two ways to launch this prototype on CDSW:
 
 1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CDSW workspace, select the "CDF to CDSW with Mistal 7B model" tile, click "Launch as Project", click "Configure Project".
-2. **As ML Prototype** - In a CDSW workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/kevinbtalbert/cdf-to-CDSW-llama2-chatbot), click "Create Project", click "Configure Project".
+2. **As ML Prototype** - In a CDSW workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/kevinbtalbert/CDSW_AMP_CPU-ONLY-MISTRAL7B-CHATBOT), click "Create Project", click "Configure Project".
 
 
 ## The Fine Print

@@ -1,4 +1,4 @@
-name: CDF to CML Mistral 7B Chatbot
+name: CDF to CDSW Mistral 7B Chatbot
 description: |
   Host internal open source Mistral 7B LLM in the form of UI and API endpoint with semantic search from custom knowledge base generated with CDF.
 
@@ -62,11 +62,11 @@ tasks:
     short_summary: Populate Vector DB with documents embeddings
 
   - type: start_application
-    name: CML Mistral 7B Chatbot Interface
-    subdomain: cml-mistral-ui
+    name: CDSW Mistral 7B Chatbot Interface
+    subdomain: cdsw-mistral-ui
     script: 4_app/frontend_app.py
-    short_summary: Create and start CML Mistral frontend application
-    long_summary: Create and start CML Mistral 7B frontend application. Remember to enable unauthenticated app access for external access to the UI.
+    short_summary: Create and start CDSW Mistral frontend application
+    long_summary: Create and start CDSW Mistral 7B frontend application. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 4
     memory: 16
     environment_variables:
