@@ -8,9 +8,13 @@ import tensorflow as tf
 import utils.vector_db_utils as vector_db
 import utils.model_embedding_utils as model_embedding
 from llama_cpp import Llama
+from huggingface_hub import hf_hub_download
 
 ## Initialize Llama2 Model on app startup
-model_path = "/home/cdsw/models/gen-ai-model/llama-2-13b-chat.ggmlv3.q5_1.bin"
+GEN_AI_MODEL_FILENAME = "mistral-7b-instruct-v0.1.Q3_K_L.gguf"
+GEN_AI_MODEL_REPO = "TheBloke/Mistral-7B-Instruct-v0.1-GGUF"
+
+model_path = hf_hub_download(repo_id=GEN_AI_MODEL_REPO, filename=GEN_AI_MODEL_FILENAME)
 
 llama2_model = Llama(
     model_path=model_path,
@@ -18,6 +22,12 @@ llama2_model = Llama(
     n_ctx=2000
 )
 
+## Initialize Llama2 Model on app startup
+llama2_model = Llama(
+    model_path=model_path,
+    n_gpu_layers=64,
+    n_ctx=2000
+)
 
 # Test an inference
 print(llama2_model(prompt="Hello ", max_tokens=1))

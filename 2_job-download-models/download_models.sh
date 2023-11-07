@@ -15,17 +15,11 @@ download_lfs_files () {
     done
 }
 
-GEN_AI_MODEL_URL="https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/resolve/main/llama-2-13b-chat.ggmlv3.q5_1.bin"
 EMBEDDING_MODEL_URL="https://huggingface.co/sentence-transformers/all-mpnet-base-v2/resolve/main/all-mpnet-base-v2.tar.gz"
 
 # Create the models directory if it doesn't exist
 rm -rf ./models
-mkdir -p models/gen-ai-model
 mkdir -p models/embedding-model
-
-# Download models
-echo "Downloading GEN_AI model..."
-curl -L -o models/gen-ai-model/llama-2-13b-chat.ggmlv3.q5_1.bin ${GEN_AI_MODEL_URL} || echo "Failed to download GEN_AI model"
 
 echo "Downloading EMBEDDING model..."
 # Downloading model for generating vector embeddings
@@ -37,4 +31,4 @@ cd embedding-model
 git lfs install
 git lfs pull
 
-echo "Model downloads complete."
+echo "Model download complete."
