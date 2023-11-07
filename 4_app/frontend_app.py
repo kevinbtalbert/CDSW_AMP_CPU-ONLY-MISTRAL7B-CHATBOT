@@ -63,10 +63,10 @@ def main():
     # Configure gradio QA app 
     print("Configuring gradio app")
     demo = gradio.Interface(fn=get_responses,
-                            title="Enterprise Custom Knowledge Base Chatbot with Llama2",
-                            description="This AI-powered assistant uses Cloudera DataFlow (NiFi) to scrape a website's sitemap and create a knowledge base. The information it provides as a response is context driven by what is available at the scraped websites. It uses Meta's open-source Llama2 model and the sentence transformer model all-mpnet-base-v2 to evaluate context and form an accurate response from the semantic search. It is fine tuned for questions stemming from topics in its knowledge base, and as such may have limited knowledge outside of this domain. As is always the case with prompt engineering, the better your prompt, the more accurate and specific the response.",
+                            title="Enterprise Custom Knowledge Base Chatbot with Mistral 7B",
+                            description="This AI-powered assistant uses Cloudera DataFlow (NiFi) to scrape a website's sitemap and create a knowledge base. The information it provides as a response is context driven by what is available at the scraped websites. It uses Mistral 7B's model and the sentence transformer model all-mpnet-base-v2 to evaluate context and form an accurate response from the semantic search. It is fine tuned for questions stemming from topics in its knowledge base, and as such may have limited knowledge outside of this domain. As is always the case with prompt engineering, the better your prompt, the more accurate and specific the response.",
                             inputs=[gradio.Radio(['mistral-7b-instruct'], label="Select Model", value="mistral-7b-instruct"), gradio.Radio(['1', '2', '3'], label="Select Temperature (Randomness of Response)", value=["1", "2", "3"]), gradio.Radio(["50", "100", "250", "500", "1000"], label="Select Number of Tokens (Length of Response)", value=["50", "100", "250", "500", "1000"]), gradio.Textbox(label="Topic Weight", placeholder="This field can be used to prioritize a topic weight."), gradio.Textbox(label="Question", placeholder="Enter your question here.")],
-                            outputs=[gradio.Textbox(label="Llama2 Model Response"), gradio.Textbox(label="Context Data Source(s)")],
+                            outputs=[gradio.Textbox(label="Mistral 7B Model Response"), gradio.Textbox(label="Context Data Source(s)")],
                             allow_flagging="never",
                             css=app_css)
 

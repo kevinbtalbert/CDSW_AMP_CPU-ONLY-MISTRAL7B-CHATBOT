@@ -115,11 +115,9 @@ class TextInput(BaseModel):
     parameters: Union[dict[str, Any], None]
 
 @app.get("/")
-def status_gpu_check() -> dict[str, str]:
-    gpu_msg = "Available" if tf.test.is_gpu_available() else "Unavailable"
+def status_check() -> dict[str, str]:
     return {
-        "status": "I am ALIVE!",
-        "gpu": gpu_msg
+        "status": "I am ALIVE!"
     }
 
 @app.post("/")

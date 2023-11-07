@@ -1,5 +1,5 @@
 # CDF to CDSW with LLama2 model
-Leverage the Llama2 model for creating a UI or API derived from your own knowledge base, scraped from your organization's website. This AMP contains the files to host an open source Llama2-based model and an accompanying UI or API. This AMP enables organizations to deploy a custom chatbot, currated to data scraped from a website (or websites) sitemap(s) using CDF (NiFi). 
+Leverage the Mistral 7B model for creating a UI or API derived from your own knowledge base, scraped from your organization's website. This AMP contains the files to host an open source Mistral-based model and an accompanying UI or API. This AMP enables organizations to deploy a custom chatbot, currated to data scraped from a website (or websites) sitemap(s) using CDF (NiFi). 
 
 ![](/assets/catalog-entry.png)
 
@@ -15,7 +15,7 @@ This project allows you to access the context-driven LLM using two flavors: a UI
 
 ### UI (Front end)
 
-This is the default application choice for the AMP. You should be able to access the view through your applications nav. When it starts, you will be able to select the default model (`llama-2-13b-chat`), temperature (a good default is 1), number of tokens (a good default may be 100), topic weight (a domain for the corpus of knowledge to prioritize), and question for the model to process. Defaults will be selected if you choose not to answer these; however a question is required.
+This is the default application choice for the AMP. You should be able to access the view through your applications nav. When it starts, you will be able to select the default model (`mistral-7b-instruct`), temperature (a good default is 1), number of tokens (a good default may be 100), topic weight (a domain for the corpus of knowledge to prioritize), and question for the model to process. Defaults will be selected if you choose not to answer these; however a question is required.
 
 ![](/assets/interface.png)
 
@@ -54,22 +54,19 @@ Form the payload/url and body to match the below, and add the header `Content-Ty
 
 ![](/assets/postman-setup.png)
 
-Note that in future development, `engine` may also be customized to include more than the Llama2 one which comes with the AMP deployment.
+Note that in future development, `engine` may also be customized to include more than the Mistral one which comes with the AMP deployment.
 
 2. Pythonic (Available in the 4_app folder as an Jupyter notebook)
 
 ## Requirements
 #### CDSW Instance Types
-- A GPU instance is required to perform inference on the LLM
-  - [CDSW Documentation: GPUs](https://docs.cloudera.com/machine-learning/cloud/gpu/topics/ml-gpu.html)
-- A CUDA 5.0+ capable GPU instance type is recommended
-  - The torch libraries in this AMP require a GPU with CUDA compute capability 5.0 or higher. (i.e. nVidia V100, A100, T4 GPUs)
+This is a CPU/Mem only LLM. NO GPU is required for this AMP.
 
 #### Resource Requirements
 This AMP creates the following workloads with resource requirements:
 - CDSW Session: `2 CPU, 4GB MEM`
 - CDSW Jobs: `4 CPU, 16GB MEM`
-- CDSW Application: `2 CPU, 1 GPU, 16GB MEM`
+- CDSW Application: `4 CPU, 16GB MEM`
 
 #### External Resources
 This AMP requires pip packages and models from huggingface. Depending on your CDSW networking setup, you may need to whitelist some domains:
@@ -82,7 +79,7 @@ This AMP requires pip packages and models from huggingface. Depending on your CD
 #### Open-Source Models and Utilities
 - [all-mpnet-base-v2](https://huggingface.co/sentence-transformers/sentence-transformers/all-mpnet-base-v2/resolve/main/all-mpnet-base-v2.tar.gz)
      - Vector Embeddings Generation Model
-- [llama-2-13b-chat.ggmlv3.q5_1](https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML/resolve/main/llama-2-13b-chat.ggmlv3.q5_1.bin)
+- [mistral-7b-instruct-v0.1.Q3_K_L.gguf](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF)
    - Instruction-following Large Language Model
 - [Hugging Face transformers library](https://pypi.org/project/transformers/)
 #### Vector Database
@@ -103,4 +100,4 @@ There are two ways to launch this prototype on CDSW:
 
 All the components of the application (knowledge base, context retrieval, prompt enhancement LLM) are running within CDF and CDSW. This application does not call any external model APIs nor require any additional training of an LLM. The knowledge base is generated using the user passed sitemaps in NiFi (CDF) or Python, depending on the user preference.
 
-By configuring and launching this AMP, you will cause TheBloke/Llama-2-13B-chat-GGML, which is a third party large language model (LLM), to be downloaded and installed into your environment from the third party’s website. Additionally, you will be downloading sentence-transformers/all-mpnet-base-v2, which is the embedding model used in this project. Please see https://huggingface.co/TheBloke/Llama-2-13B-chat-GGML and https://huggingface.co/sentence-transformers/all-mpnet-base-v2 for more information about the LLM and embedding model, including the applicable license terms.  If you do not wish to download and install TheBloke/Llama-2-13B-chat-GGML and sentence-transformers/all-mpnet-base-v2, do not deploy this repository.  By deploying this repository, you acknowledge the foregoing statement and agree that Cloudera is not responsible or liable in any way for TheBloke/Llama-2-13B-chat-GGML and sentence-transformers/all-mpnet-base-v2. Author: Cloudera Inc.
+By configuring and launching this AMP, you will cause TheBloke/Mistral-7B-Instruct-v0.1-GGUF, which is a third party large language model (LLM), to be downloaded and installed into your environment from the third party’s website. Additionally, you will be downloading sentence-transformers/all-mpnet-base-v2, which is the embedding model used in this project. Please see https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF and https://huggingface.co/sentence-transformers/all-mpnet-base-v2 for more information about the LLM and embedding model, including the applicable license terms.  If you do not wish to download and install TheBloke/Mistral-7B-Instruct-v0.1-GGUF and sentence-transformers/all-mpnet-base-v2, do not deploy this repository.  By deploying this repository, you acknowledge the foregoing statement and agree that Cloudera is not responsible or liable in any way for TheBloke/Mistral-7B-Instruct-v0.1-GGUF and sentence-transformers/all-mpnet-base-v2. Author: Cloudera Inc.
