@@ -1,6 +1,6 @@
-name: CDF to CML LLama2 Chatbot
+name: CDF to CML Mistral 7B Chatbot
 description: |
-  Host internal open source Llama2 LLM in the form of UI and API endpoint with semantic search from custom knowledge base generated with CDF.
+  Host internal open source Mistral 7B LLM in the form of UI and API endpoint with semantic search from custom knowledge base generated with CDF.
 
 author: Cloudera Inc.
 specification_version: 1.0
@@ -52,25 +52,13 @@ tasks:
   - type: run_job
     entity_label: vectordb_insert
     short_summary: Populate Vector DB with documents embeddings
-  
-  - type: start_application
-    name: CML Llama2 Chatbot API
-    subdomain: cml-llama2-api
-    script: 4_app/api_app.py
-    short_summary: Create CML Llama2 API application
-    long_summary: Create CML Llama2 API application. To run this, you will shut down the interface version of the application and start this one. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external facing API calls.
-    cpu: 2
-    memory: 16
-    gpu: 1
-    environment_variables:
-      TASK_TYPE: START_APPLICATION
 
   - type: start_application
-    name: CML Llama2 Chatbot Interface
-    subdomain: cml-llama2-ui
+    name: CML Mistral 7B Chatbot Interface
+    subdomain: cml-mistral-ui
     script: 4_app/frontend_app.py
-    short_summary: Create and start CML Llama2 frontend application
-    long_summary: Create and start CML Llama2 frontend application. Ensure available GPUs for best performance. Remember to enable unauthenticated app access for external access to the UI.
+    short_summary: Create and start CML Mistral frontend application
+    long_summary: Create and start CML Mistral 7B frontend application. Remember to enable unauthenticated app access for external access to the UI.
     cpu: 4
     memory: 16
     environment_variables:
