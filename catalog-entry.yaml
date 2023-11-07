@@ -12,7 +12,7 @@ entries:
         This AMP enables organizations to deploy a custom chatbot, currated to data scraped from a website (or websites) sitemap(s) using CDF (NiFi).
 
     image_path: >-
-      https://raw.githubusercontent.com/kevinbtalbert/CDSW_AMP_CPU-ONLY-MISTRAL7B-CHATBOT/main/images/catalog-entry.png
+      https://raw.githubusercontent.com/kevinbtalbert/CDSW_AMP_CPU-ONLY-MISTRAL7B-CHATBOT/blob/main/assets/catalog-entry.png
     tags:
       - Chatbot
       - LLM
