@@ -7,6 +7,12 @@ specification_version: 1.0
 prototype_version: 1.0
 date: "2023-11-07"
 
+environment_variables:
+  PYTHON_PATH:
+    default: "/home/cdsw/.local/lib/python3.9/site-packages"
+    description: "Leave this value as is. This is required by CDSW due to CDSW module overriding user installed modules."
+    required: true
+
 runtimes:
   - editor: Workbench
     kernel: Python 3.9
