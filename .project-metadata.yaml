@@ -23,7 +23,7 @@ tasks:
 
   - type: run_session
     name: Install Dependencies
-    script: 1_session-install-deps/install_llama_deps.py
+    script: 1_install_session_deps/install_llama_deps.py
     short_summary: Install Llama Dependencies
     kernel: python3
     cpu: 2
