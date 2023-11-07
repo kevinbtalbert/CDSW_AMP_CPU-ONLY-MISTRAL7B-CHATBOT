@@ -52,9 +52,9 @@ def get_responses(engine, temperature, token_count, question):
     context_chunk = get_nearest_chunk_from_vectordb(vector_db_collection, vdb_question)
     vector_db_collection.release()
     
-    if engine == "llama-2-13b-chat":
-        # Phase 2a: Perform text generation with LLM model using found kb context chunk
-        response = get_llama2_response_with_context(question, context_chunk, temperature, token_count)
+    
+    # Phase 2a: Perform text generation with LLM model using found kb context chunk
+    response = get_llama2_response_with_context(question, context_chunk, temperature, token_count)
 
     return response
 
@@ -126,7 +126,7 @@ def status_gpu_check() -> dict[str, str]:
 def generate_text(data: TextInput) -> dict[str, str]:
     try:
         # Set defaults
-        engine = "llama-2-13b-chat" # If you add more engines, you will want to begin passing this as a parameter
+        engine = "mistral-7b-instruct" # If you add more engines, you will want to begin passing this as a parameter
         temperature = 1
         token_count = 100
         

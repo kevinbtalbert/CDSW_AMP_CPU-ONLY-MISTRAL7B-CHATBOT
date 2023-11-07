@@ -65,7 +65,7 @@ def main():
     demo = gradio.Interface(fn=get_responses,
                             title="Enterprise Custom Knowledge Base Chatbot with Llama2",
                             description="This AI-powered assistant uses Cloudera DataFlow (NiFi) to scrape a website's sitemap and create a knowledge base. The information it provides as a response is context driven by what is available at the scraped websites. It uses Meta's open-source Llama2 model and the sentence transformer model all-mpnet-base-v2 to evaluate context and form an accurate response from the semantic search. It is fine tuned for questions stemming from topics in its knowledge base, and as such may have limited knowledge outside of this domain. As is always the case with prompt engineering, the better your prompt, the more accurate and specific the response.",
-                            inputs=[gradio.Radio(['llama-2-13b-chat'], label="Select Model", value="llama-2-13b-chat"), gradio.Radio(['1', '2', '3'], label="Select Temperature (Randomness of Response)", value=["1", "2", "3"]), gradio.Radio(["50", "100", "250", "500", "1000"], label="Select Number of Tokens (Length of Response)", value=["50", "100", "250", "500", "1000"]), gradio.Textbox(label="Topic Weight", placeholder="This field can be used to prioritize a topic weight."), gradio.Textbox(label="Question", placeholder="Enter your question here.")],
+                            inputs=[gradio.Radio(['mistral-7b-instruct'], label="Select Model", value="mistral-7b-instruct"), gradio.Radio(['1', '2', '3'], label="Select Temperature (Randomness of Response)", value=["1", "2", "3"]), gradio.Radio(["50", "100", "250", "500", "1000"], label="Select Number of Tokens (Length of Response)", value=["50", "100", "250", "500", "1000"]), gradio.Textbox(label="Topic Weight", placeholder="This field can be used to prioritize a topic weight."), gradio.Textbox(label="Question", placeholder="Enter your question here.")],
                             outputs=[gradio.Textbox(label="Llama2 Model Response"), gradio.Textbox(label="Context Data Source(s)")],
                             allow_flagging="never",
                             css=app_css)
@@ -105,9 +105,8 @@ def get_responses(engine, temperature, token_count, topic_weight, question):
     context_chunk, sources = get_nearest_chunk_from_vectordb(vector_db_collection, vdb_question)
     vector_db_collection.release()
 
-    if engine == "llama-2-13b-chat":
-        # Phase 2a: Perform text generation with LLM model using found kb context chunk
-        response = get_llama2_response_with_context(question, context_chunk, temperature, token_count, topic_weight)
+    # Phase 2a: Perform text generation with LLM model using found kb context chunk
+    response = get_llama2_response_with_context(question, context_chunk, temperature, token_count, topic_weight)
 
     return response, sources
 
