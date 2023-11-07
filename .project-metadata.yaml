@@ -20,6 +20,14 @@ tasks:
     kernel: python3
     cpu: 4
     memory: 16
+
+  - type: run_session
+    name: Install Dependencies
+    script: 1_session-install-deps/install_llama_deps.py
+    short_summary: Install Llama Dependencies
+    kernel: python3
+    cpu: 2
+    memory: 8
     
   - type: create_job
     name: Download Models
