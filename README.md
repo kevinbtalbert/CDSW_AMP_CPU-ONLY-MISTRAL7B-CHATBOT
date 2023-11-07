@@ -1,10 +1,7 @@
-# CDF to CDSW with LLama2 model
+# CDF to CDSW with Mistral 7B model
 Leverage the Mistral 7B model for creating a UI or API derived from your own knowledge base, scraped from your organization's website. This AMP contains the files to host an open source Mistral-based model and an accompanying UI or API. This AMP enables organizations to deploy a custom chatbot, currated to data scraped from a website (or websites) sitemap(s) using CDF (NiFi). 
 
 ![](/assets/catalog-entry.png)
-
-## AMP Architecture
-![](/assets/architecture.png)
 
 
 ## Building your custom knowledge base
@@ -92,7 +89,7 @@ This AMP requires pip packages and models from huggingface. Depending on your CD
 ## Deploying on CDSW
 There are two ways to launch this prototype on CDSW:
 
-1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CDSW workspace, select the "CDF to CDSW with Llama2 models" tile, click "Launch as Project", click "Configure Project".
+1. **From Prototype Catalog** - Navigate to the Prototype Catalog on a CDSW workspace, select the "CDF to CDSW with Mistal 7B model" tile, click "Launch as Project", click "Configure Project".
 2. **As ML Prototype** - In a CDSW workspace, click "New Project", add a Project Name, select "ML Prototype" as the Initial Setup option, copy in the [repo URL](https://github.com/kevinbtalbert/cdf-to-CDSW-llama2-chatbot), click "Create Project", click "Configure Project".
 
 
