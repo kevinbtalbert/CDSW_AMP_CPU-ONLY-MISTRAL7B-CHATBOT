@@ -14,8 +14,6 @@ This project allows you to access the context-driven LLM using two flavors: a UI
 
 This is the default application choice for the AMP. You should be able to access the view through your applications nav. When it starts, you will be able to select the default model (`mistral-7b-instruct`), temperature (a good default is 1), number of tokens (a good default may be 100), topic weight (a domain for the corpus of knowledge to prioritize), and question for the model to process. Defaults will be selected if you choose not to answer these; however a question is required.
 
-![](/assets/interface.png)
-
 ### REST API
 
 #### Forming a request to the API
