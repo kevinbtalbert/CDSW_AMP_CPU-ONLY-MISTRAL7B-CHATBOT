@@ -148,10 +148,10 @@ def load_context_chunk_from_data(id_path):
 def get_llama2_response_with_context(question, context, temperature, token_count, topic_weight):
 
     if topic_weight is not None:
-        question = "Answer this question based on given context. If you do not know the answer, do not make something up. You should know that this question is about the topic " + str(topic_weight) + " This is the question: " + str(question)
+        question = "Answer this question based on given context. This question is about the topic " + str(topic_weight) + " This is the question: " + str(question)
     else:
-        question = "Answer this question based on given context. If you do not know the answer, do not make something up. This is the question: " + str(question)
-    
+        question = "Answer this question based on given context. This is the question: " + str(question)
+
     question_and_context = question + "Here is the context: " + str(context)
 
     try:
