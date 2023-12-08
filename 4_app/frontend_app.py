@@ -152,7 +152,7 @@ def get_llama2_response_with_context(question, context, temperature, token_count
     else:
         question = "Answer this question based on given context. This is the question: " + str(question)
 
-    question_and_context = question + "Here is the context: " + str(context)
+    question_and_context = question + "Here is the context: " + str(context[:2000])
 
     try:
         params = {
